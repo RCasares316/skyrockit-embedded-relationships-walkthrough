@@ -70,7 +70,7 @@ const loginUser = async (req, res) => {
   };
 
   req.session.save(() => {
-    res.redirect("/");
+    res.redirect("/applications");
   });
 };
 

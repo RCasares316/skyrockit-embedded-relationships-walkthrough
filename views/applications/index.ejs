@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="/stylesheets/styles.css" />
   </head>
   <body>
-    <%- include('../partials/navbar.ejs') %>
-
+    <%- include('../partials/nav.ejs') %>
     <div class="all-apps-body">
       <div class="all-apps-header">
         <h1>Your Apps</h1>
         <a class="add-app-link" href="/applications/new">Add an App</a>
       </div>
-
-      <!-- [TBU] Map through applications -->
+      <ul>
+        <% applications.forEach((application)=>{ %>
+          <a href="/applications/<%= application._id %>">
+            <li><%= application.title %> at <%= application.company %></li>
+          </a>
+        <% }) %>
+      </ul>
     </div>
   </body>
 </html>

@@ -6,11 +6,27 @@
     <title>Application Title</title>
     <link rel="stylesheet" href="/stylesheets/styles.css" />
   </head>
-  <body>
-    <%- include('../partials/navbar.ejs') %>
+    <body>
+    <%- include('../partials/nav.ejs') %>
 
-    <!-- [TBU] Add application data -->
-    <!-- [TBU] Add a link to send to edit page -->
-    <!-- [TBU] Add a button (form) to delete an application -->
+    <h1><%= application.title %> at <%= application.company %></h1>
+    <% if (application.notes) { %>
+    <p>Notes: <%= application.notes %></p>
+    <% } %> 
+    <% if (application.postingLink) { %>
+    <a href="<%= application.postingLink %>">View job posting</a>
+    <% } %>
+    <p>Current Status: <%= application.status %></p>
+
+    <a href="/applications/<%= application._id %>/edit">
+      Edit
+    </a>
+
+    <form
+      action="/applications/<%= application._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button type="submit">Delete this application</button>
+    </form>
   </body>
 </html>
